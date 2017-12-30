@@ -1,0 +1,48 @@
+(page "index.html"
+  (:require
+    [project.rpc :as rpc]))
+
+(rpc/init)
+
+(html
+  (head
+   (title "Team Work")
+   (link :rel "stylesheet" :href "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" :integrity "sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" :crossorigin "anonymous")
+   (link :href "https://fonts.googleapis.com/css?family=Monoton|Cabin+Sketch:700|Bree+Serif|Erica+One" :rel "stylesheet")
+   (link :href "public/app.css" :rel "stylesheet"))
+  (body
+   (div :class "container-fluid"
+             (div :class "row"
+                  (div :class "col-sm-3")
+                  (div :class "col-sm-4 front-page-content"
+                       (h1 :class "knockout-title" "Why Not Learn?")
+                       (h2 :class "knockout-title" "Smart: the new cool!!!")))
+             (div :class "row"
+                  (div :class "col-sm-3")
+                  (div :class "col-sm-5 front-page-content"
+                       (h3 :class "knockout" "Learn Together")
+                       (p :class "knockout" "To learn is to be human, to be an intellectual is to create, and when we work together we collaborate.")))
+             (div :class "row"
+                  (div :class "col-sm-4")
+                  (div :class "col-sm-5 front-page-content bottom"
+                       (h3 :class "knockout" "Share")
+                       (p :class "knockout poem" :style "white-space: pre-line" "
+			The whole point of this site
+			\nIs to contemplate together
+			\nWhat you wish to achieve
+			\nWith your time
+			\n\n
+			\nIf you work hard and try
+			\nYou can accomplish great
+			\nThings
+			\n\n
+			\nThat is why this site is designed
+			\nWith your friends in mind
+			\nTo collaborate and then
+			\nShare, give badges
+			\nAnd exp
+			\n\nCome up with a new idea
+			\nThat can change the course
+			\nOf history")
+                       (div :class "link-div"
+                            (a :href "/work" :class "test" "Explore")))))))

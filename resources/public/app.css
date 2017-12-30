@@ -1,0 +1,182 @@
+body {
+    margin: 0;
+    padding: 20px;
+    background-image: url("img/background-7.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: 'Bree Serif', sans-serif;
+}
+
+@keyframes main-tilt {
+    0% {transform: scale(1.0, 1.0);}
+    50% {transform: scale(1.01, 1.01);}
+    100% {transform: scale(1.0, 1.0);}
+}
+
+.title {
+    width: 46%;
+    border-image: url("img/background-1.jpg") 100;
+    border-top: none;
+    border-left: none;
+    border-bottom: 6px solid white;
+    border-right: 6px solid white;
+    margin-bottom: 20px;
+}
+
+.main-page-content, .front-page-content {
+    background-image: url("img/texture-3.jpg");
+    background-size: cover;
+    background-color: transparent;
+    border: 6px solid white;
+    border-image: url("img/background-1.jpg") 100;
+    padding: 30px;
+}    
+
+.front-page-content {
+    transform: scale(1.0, 1.0);
+    margin: 8px;
+}
+
+
+.front-page-content:hover {
+    animation: main-tilt 0.2s linear;
+}
+
+
+h1 {
+    color: black;
+    font-family: 'Monoton', cursive;
+    font-size: 2.6em;
+}
+
+h2 {
+    font-family: 'Cabin Sketch', cursive;
+    font-weight: bold;
+    font-size: 2.6em;
+}
+
+h3, a {
+    font-family: 'Erica One', cursive;
+    font-size: 3em;
+}
+
+@keyframes explore-hover {
+    0%   {border-color: transparent;
+	  color: black;}
+    100% {border-color: black;
+	  color: transparent;}
+}
+
+a {
+    color: black;
+    border-left: dashed 15px transparent;
+    padding-left: 5px;
+}
+
+a:hover {
+    color: black;
+    animation: explore-hover 1.5s linear 0s infinite alternate;
+    border-left: dashed 15px black;
+    text-decoration: none;
+}
+
+.link-div {
+    background-image: url("img/texture-4.jpg");
+    background-size: cover;
+    width: 250px;
+    padding: 5px;
+    margin: 50px;
+    text-align: center;
+}
+
+p {
+    font-size: 2.2em;
+    padding: 0;
+    margin: 0;
+}
+
+p.poem {
+    line-height: 80%;
+}
+
+.knockout {
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    
+    background-image: url("img/texture-4.jpg"); */
+    color: black;
+}
+
+.knockout-title {
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    
+    background-image: url("img/texture-10.jpg");
+    background-size: cover;
+    color: black;
+}   
+
+.knockout-three {
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    font-size: 4em;
+    background-image: url("img/bronze.jpg");
+    background-size: cover;
+    color: black;
+    margin-bottom: 40px;
+}   
+
+/* .knockout-three:hover { */
+/*     background-image: url("img/texture-11.jpg"); */
+/* } */
+
+.bottom {
+    height: 300px;
+    overflow-y: scroll;
+}
+
+
+/* Work Page */
+
+.work-page img {
+    border: solid 4px black;
+    border-radius: 5%;
+    margin: 16px;
+}
+
+.work-page textarea {
+    font-size: 2.2em;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 400px;
+    background-color: transparent;
+}
+
+.work-page .cool-text textarea {
+    height: 50px;
+}
+
+.cool-text {
+    color: white;
+}
+
+.work-page button {
+    font-size: 3em;
+    background-color: black;
+}
+
+.work-page .add-new-content {
+    background-image: url("img/texture-4.jpg");
+    background-size: cover;
+    border: solid 4px black;
+    border-radius: 10px;
+    color: black;
+    font-size: 3em;
+    margin: 20px;
+    padding: 20px;
+}
+			 
+.work-page .add-new-content:hover {
+    color: white;
+}

@@ -1,0 +1,45 @@
+(page "blank.html"
+  (:require
+    [project.rpc :as rpc]))
+
+(rpc/init)
+
+(def parts (cell= (p :class "knockout" "Hello programmers who may happen to be girls!")))
+
+(defelem add-new-btn
+  [text-for-button]
+  (button :class "add-new-content" :type "button" :value text-for-button))
+
+(html
+  (head
+   (title "Starter Template")
+   (link :rel "stylesheet" :href "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" :integrity "sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" :crossorigin "anonymous")
+   (link :href "https://fonts.googleapis.com/css?family=Monoton|Cabin+Sketch:700|Bree+Serif|Erica+One" :rel "stylesheet")
+   (link :href "public/app.css" :rel "stylesheet"))
+  (body
+   (div :class "container-fluid work-page"
+             (div :class "row"
+                  (div :class "col-sm-1")
+                  (div :class "col-sm-8 main-page-content"
+                       (div :class "title"
+                            (h1 :class "knockout-title" "Why Not Learn?")
+                            (h2 :class "knockout-title" "Smart: the new cool!!!"))
+                       (div :id "main-content" (cell= parts))
+                       (div :class "text-center"
+                            (button :class "add-new-content" :type "button" "TEXT")
+                            (button :class "add-new-content" :type "button" "IMAGE")))
+                  (div :class "col-sm-3 main-page-content"
+                       (h3 :class "knockout" "Learners")
+                       (h4 :class "knockout" "Paul")
+                       (h4 :class "knockout" "Garrett")
+                       (h4 :class "knockout" "George")
+                       (h3 :class "knockout" "Pages")
+                       (h4 :class "knockout" "Tutorial")
+                       (h4 :class "knockout" "Finished")
+                       (h4 :class "knockout" "Newbie")
+                       (h4 :class "knockout" "Rules")
+                       (h3 :class "knockout" "Links")
+                       (h4 :class "knockout" "Homepage")
+                       (h4 :class "knockout" "Learners")
+                       (h4 :class "knockout" "Profile")
+                       (h4 :class "knockout" "Settings"))))))

@@ -1,0 +1,161 @@
+(page "work.html"
+  (:require
+    [project.rpc :as rpc]))             ;Import the data from the front end
+
+(rpc/init)
+
+(def switch-to-edit (cell nil))         ;The switch cell used for testing purposes
+(def text-cell (cell p))
+
+(def p-hide (cell {:display "initial"})) ;Used to hide the test paragraph
+(def ta-hide (cell {:display "none"}))   ;Used to hide the textarea
+
+(defn switch-fn
+  "Switches between the textarea being hidden or the paragraph being hidden depending on which bool switch-to-edit is in"
+  []
+  (if @switch-to-edit                   ;Either in edit mode or not
+    (dosync
+     (reset! switch-to-edit nil)        ;Opposite of its current
+     (reset! p-hide {:display "initial"}) ;Should display the paragraph
+     (reset! ta-hide {:display "none"}))  ;Hides the textarea
+    (dosync
+     (reset! switch-to-edit true)
+     (reset! p-hide {:display "none"})
+     (reset! ta-hide {:display "initial"}))))
+
+
+;; (defn switch-fn
+;;   "Switches between the textarea being hidden or the paragraph being hidden depending on which bool switch-to-edit is in"
+;;   []
+;;   (if @switch-to-edit                   ;Either in edit mode or not
+;;     (dosync
+;;      (reset! switch-to-edit nil))        ;Opposite of its current
+;;     (dosync
+;;      (reset! switch-to-edit true))))
+
+;; (def text-1 (cell (text "~{rpc/text}")))
+(def text-1 (cell "This site is a test bed for learning, there are lots of in comments ideas, but, it served its purpose. Click on me to change the text..."))
+(def text-2 (cell "Proin feugiat elit ut consequat tempor. Praesent ullamcorper, justo ut scelerisque porttitor, felis dui interdum justo, vel egestas magna elit ac nisi. Sed lobortis diam nulla, ut porta lacus luctus a. Curabitur rhoncus, mi ac venenatis vestibulum, ex purus varius magna, et gravida lorem neque eu lorem. Maecenas at vulputate leo. Mauris ac tellus tellus. Pellentesque lorem velit, commodo eget enim eu, vulputate sodales nibh. Nullam enim ipsum, fringilla eu purus eget, vulputate molestie lacus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut vestibulum accumsan augue at vulputate. Nullam eget justo lacus. Pellentesque ac arcu finibus, posuere elit in, consectetur felis. Proin porta hendrerit lorem, vitae auctor leo rhoncus eget."))
+(def text-3 (cell "Enter text here..."))
+
+(def text-test (cell "There was and there wasn't a ..."))
+
+(defelem test-elem
+  [_ [pass-cell]]
+  (cell= (if (not switch-to-edit)
+           (p :click #(switch-fn) :class "knockout" pass-cell)
+           [(textarea :value pass-cell :change (fn [evt]
+                                                 (reset! pass-cell @evt)))
+                      (button :class "cool-text" :click #(switch-fn) "Done!")])))
+
+(defelem paragraph-cool
+  [_ [text]]
+  (p :class "cool-text" text))
+
+(defelem t-a
+  [_ [temp-cell]]
+  [(textarea :class "cool-text" :css (cell= ta-hide) :value temp-cell :change (fn [evt]
+                                                           (reset! temp-cell @evt)))
+   (button :class "cool-text" :click #(switch-fn) :css (cell= ta-hide) "Done...")])
+
+
+(defelem h3-text
+  [_ [text]]
+   (h3 text))
+;; (defelem etext
+;;   "Used if you want to insert a paragraph etext is used, takes in a cell with a string"
+;;   [cell-for-data]
+;;   (p :class "cool-text" :click #(switch-fn) :css (cell= p-hide) @cell-for-data))
+
+
+(defelem buttons-for-life
+  [_ [main]]
+  (button :class "cool-text" main))
+
+(defelem etextarea
+  [temp-cell]
+  (textarea :class "cool-text" :css (cell= p-hide) :value temp-cell :change #(reset! temp-cell @%)))
+
+(defelem tatester
+  [attr kids]
+  (textarea :value kids :change #(reset! kids @%)))
+
+
+(defelem new-h1
+  []
+  (h1 "This is the tag."))
+
+(textarea :class "cool-text" :css (cell= ta-hide) :value text-1  :change #(reset! text-1 @%))
+(p :class "cool-text" :click #(switch-fn) :css (cell= p-hide) (cell= text-1))
+
+(def input-array (cell []))
+
+(html
+  (head
+   (title "Work Made Fun")
+   (link :rel "stylesheet" :href "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" :integrity "sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" :crossorigin "anonymous")
+   (link :href "https://fonts.googleapis.com/css?family=Monoton|Cabin+Sketch:700|Bree+Serif|Erica+One" :rel "stylesheet")
+   (link :href "public/app.css" :rel "stylesheet"))
+  (body
+   (div :class "container-fluid work-page"
+             (div :class "row"
+                  (div :class "col-sm-1")
+                  (div :class "col-sm-8 main-page-content"
+                       (div :class "title"
+                            (h1 :class "knockout-title" "Why Not Learn?")
+                            (h2 :class "knockout-title" "Smart: the new cool!!!"))
+                       
+                       (h3 :class "knockout-three" "Project Armadillo")
+     
+                       ;; (test-elem text-1)
+                       ;; (button "Huge BUtton" :click #(js/alert @text-1))
+                       ;; (paragraph-cool "I really really really really... like ... ")
+                       ;; (br)
+                       ;; (br)
+                       ;; (br)
+                       ;; (loop-tpl :bindings [n rpc/amount-of-text-elements]
+                       ;;           (dosync
+                       ;;            (swap! input-array conj @n)
+                                  ;; (p :class "knockout" n)))
+                       ;; (t-a (nth input-array n))))
+                       ;; (p :class "knockout" :click #(switch-fn) :css (cell= p-hide) (cell= text-1))
+                       ;; (textarea :class "cool-text" :css (cell= ta-hide) :value text-1  :change #(reset! text-1 @%))
+                       ;; (button :class "cool-text" :click #(switch-fn) :css (cell= ta-hide) "Done...")
+                       ;; (div :class "text-center"
+                       ;;      (img :src "/img/test/1.jpg"))
+
+                       (h3 :class "knockout" "First Attempt")
+                       (t-a text-1)
+                       (p :class "knockout" :click #(switch-fn) (cell= text-1))
+                       (div :class "text-center"
+                            (img :src "/img/test/1.jpg"))
+
+                       (h3 :class "knockout" "My Second Attempt")
+                       (t-a text-2)
+                       (p :class "knockout" :click #(switch-fn) (cell= text-2))
+                       (div :class "text-center"
+                            (img :src "/img/test/2.jpg"))
+                       (h3 :class "knockout" "Finished Project")
+                       (t-a text-3)
+                       (p :class "knockout" :click #(switch-fn) (cell= text-3))
+
+                       (div :class "text-center"
+                            (img :src "/img/test/3.jpg")))
+                  (div :class "col-sm-3 main-page-content"
+                       (h3 :class "knockout" "Learners")
+                       (h4 :class "knockout" "Paul")
+                       (h4 :class "knockout" "Garrett")
+                       (h4 :class "knockout" "George")
+                       (h3 :class "knockout" "Pages")
+                       (h4 :class "knockout" "Tutorial")
+                       (h4 :class "knockout" "Finished")
+                       (h4 :class "knockout" "Newbie")
+                       (h4 :class "knockout" "Rules")
+                       (h3 :class "knockout" "Links")
+                       (h4 :class "knockout" "Homepage")
+                       (h4 :class "knockout" "Learners")
+                       (h4 :class "knockout" "Profile")
+                       (h4 :class "knockout" "Settings"))))))
+                       
+.
+
