@@ -4,6 +4,8 @@ A [Hoplon][4] project with [Castra][2] designed to test how to build
 a website using the previous two mentioned technologies and also
 strengthen my front-end web-development skills
 
+![Why Not Learn Website](/why-not-learn.png)
+
 ## Dependencies
 
 - java 1.7+
